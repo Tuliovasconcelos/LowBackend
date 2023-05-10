@@ -20,7 +20,7 @@ class UpdateProfileService {
     password,
     old_password,
   }: IRequest): Promise<User> {
-    const usersRepository = getCustomRepository(UsersRepository);
+    const usersRepository = getCustomRepository(UsersRepository,"mysql");
 
     const user = await usersRepository.findById(user_id);
 

@@ -13,7 +13,7 @@ interface IRequest {
 
 class UpdateUserAvatarService {
   public async execute({ user_id, avatarFilename }: IRequest): Promise<User> {
-    const usersRepository = getCustomRepository(UsersRepository);
+    const usersRepository = getCustomRepository(UsersRepository,"mysql");
 
     const user = await usersRepository.findById(user_id);
 

@@ -12,7 +12,7 @@ interface IRequest {
 
 class CreateUserService {
   public async execute({ name, email, password }: IRequest): Promise<User> {
-    const usersRepository = getCustomRepository(UsersRepository);
+    const usersRepository = getCustomRepository(UsersRepository,"mysql");
     const emailExists = await usersRepository.findByEmail(email);
 
     if (emailExists) {

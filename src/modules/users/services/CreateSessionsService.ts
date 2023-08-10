@@ -18,7 +18,7 @@ interface IResponse {
 
 class CreateSessionsService {
   public async execute({ email, password }: IRequest): Promise<IResponse> {
-    const usersRepository = getCustomRepository(UsersRepository,"mysql");
+    const usersRepository = getCustomRepository(UsersRepository);
     const user = await usersRepository.findByEmail(email);
 
     if (!user) {

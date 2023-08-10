@@ -1,18 +1,14 @@
 import { Router } from 'express';
 import { celebrate, Joi, Segments } from 'celebrate';
-import multer from 'multer';
-import uploadConfig from '@config/upload';
 import UsersController from '../controllers/UsersController';
 import isAuthenticated from '@shared/http/middlewares/isAuthenticated';
-import UserAvatarController from '../controllers/UserAvatarController';
 
 const usersRouter = Router();
 const usersController = new UsersController();
-const usersAvatarController = new UserAvatarController();
-
-const upload = multer(uploadConfig.multer);
 
 usersRouter.get('/', isAuthenticated, usersController.index);
+
+usersRouter.get('/:id', isAuthenticated, usersController.show);
 
 usersRouter.post(
   '/',
@@ -26,11 +22,32 @@ usersRouter.post(
   usersController.create,
 );
 
-usersRouter.patch(
-  '/avatar',
+usersRouter.put(
+  '/:id',
   isAuthenticated,
-  upload.single('avatar'),
-  usersAvatarController.update,
+  celebrate({
+    [Segments.PARAMS]: {
+      id: Joi.string().uuid().required(),
+    },
+    [Segments.BODY]: {
+      name: Joi.string().required(),
+      email: Joi.string().email().required(),
+      password: Joi.string().required(),
+      old_password: Joi.string(), // Você pode definir as validações para o campo old_password, se necessário
+    },
+  }),
+  usersController.update,
+);
+
+usersRouter.delete(
+  '/:id',
+  isAuthenticated,
+  celebrate({
+    [Segments.PARAMS]: {
+      id: Joi.string().uuid().required(),
+    },
+  }),
+  usersController.delete,
 );
 
 export default usersRouter;

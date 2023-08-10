@@ -52,13 +52,13 @@
     "jsonwebtoken": "^8.5.1",
     "mime": "^2.5.0",
     "multer": "^1.4.2",
+    "mysql": "^2.18.1",
     "nodemailer": "^6.4.17",
-    "oracledb": "^5.5.0",
     "pg": "^8.5.1",
     "rate-limiter-flexible": "^2.1.16",
     "redis": "^4.0.0",
     "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.3.16",
+    "typeorm": "^0.2.45",
     "typeorm-pagination": "^2.0.1"
   }
 }

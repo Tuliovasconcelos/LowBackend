@@ -13,8 +13,8 @@ interface IRequest {
 
 class SendForgotPasswordEmailService {
   public async execute({ email }: IRequest): Promise<void> {
-    const usersRepository = getCustomRepository(UsersRepository,"mysql");
-    const userTokensRepository = getCustomRepository(UserTokensRepository,"mysql");
+    const usersRepository = getCustomRepository(UsersRepository);
+    const userTokensRepository = getCustomRepository(UserTokensRepository);
 
     const user = await usersRepository.findByEmail(email);
 

@@ -9,7 +9,7 @@ interface IRequest {
 
 class ShowProfileService {
   public async execute({ user_id }: IRequest): Promise<User> {
-    const usersRepository = getCustomRepository(UsersRepository,"mysql");
+    const usersRepository = getCustomRepository(UsersRepository);
 
     const user = await usersRepository.findById(user_id);
 

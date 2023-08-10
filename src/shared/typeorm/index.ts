@@ -1,8 +1,8 @@
-import { createConnections } from 'typeorm';
+import { createConnection } from 'typeorm';
 
-createConnections().then(connections => {
-
-    const mysqlConnection = connections.find(connection => connection.name === 'mysql');
-    const oracleConnection = connections.find(connection => connection.name === 'oracle');
-
-}).catch(error => console.log(error));
+createConnection()
+  .then(connection => {
+    // Aqui você pode usar a conexão MySQL conforme necessário
+    console.log('Database Postgres started on port 5432! 👌');
+  })
+  .catch(error => console.log('Erro ao estabelecer a conexão:', error));

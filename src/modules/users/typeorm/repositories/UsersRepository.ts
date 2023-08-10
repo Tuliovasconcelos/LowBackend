@@ -1,5 +1,6 @@
 import { EntityRepository, Repository } from 'typeorm';
 import User from '../entities/User';
+import Company from '@modules/companies/typeorm/entities/Company';
 
 @EntityRepository(User)
 class UsersRepository extends Repository<User> {
@@ -32,6 +33,7 @@ class UsersRepository extends Repository<User> {
 
     return user;
   }
+
 }
 
 export default UsersRepository;

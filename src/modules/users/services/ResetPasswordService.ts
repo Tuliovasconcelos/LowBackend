@@ -12,8 +12,8 @@ interface IRequest {
 
 class ResetPasswordService {
   public async execute({ token, password }: IRequest): Promise<void> {
-    const usersRepository = getCustomRepository(UsersRepository,"mysql");
-    const userTokensRepository = getCustomRepository(UserTokensRepository,"mysql");
+    const usersRepository = getCustomRepository(UsersRepository);
+    const userTokensRepository = getCustomRepository(UserTokensRepository);
 
     const userToken = await userTokensRepository.findByToken(token);
 
